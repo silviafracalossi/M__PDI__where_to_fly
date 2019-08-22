@@ -37,6 +37,7 @@
 
   <dependencies>
 
+	<!-- Spark -->
     <dependency>
       <groupId>org.apache.spark</groupId>
       <artifactId>spark-core_2.11</artifactId>
@@ -56,20 +57,21 @@
       <version>2.2.0.cloudera2</version>
     </dependency>
 
+    <!-- MySQL -->
     <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
-      <version>1.4.197</version>
-      <scope>runtime</scope>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>5.1.40</version>
     </dependency>
 
-    <dependency>
-        <groupId>org.hibernate</groupId>
-        <artifactId>hibernate-agroal</artifactId>
-        <version>5.3.9.Final</version>
-        <type>pom</type>
-    </dependency>
+	<!-- Hibernate -->
+  <dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.2.6.Final</version>
+		</dependency>
 
+	<!-- XML bind -->
     <dependency>
         <groupId>javax.xml.bind</groupId>
         <artifactId>jaxb-api</artifactId>
@@ -87,6 +89,13 @@
         <artifactId>jaxb-core</artifactId>
         <version>2.3.0</version>
     </dependency>
+
+    <!-- Javax component -->
+     <dependency>
+       <groupId>javax.activation</groupId>
+       <artifactId>activation</artifactId>
+       <version>1.1.1</version>
+     </dependency>
 
   </dependencies>
 </project>
