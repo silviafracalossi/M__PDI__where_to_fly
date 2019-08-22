@@ -1,6 +1,4 @@
 
-package models;
-
 import java.io.Serializable;
 import javax.persistence.Id;
 import javax.persistence.*;
@@ -10,7 +8,7 @@ import javax.persistence.*;
  * Class that represent the airline
  */
 @Entity
-@Table(name = "AIRLINE")
+@Table(name = "AIRLINES")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Airline implements Serializable {
 

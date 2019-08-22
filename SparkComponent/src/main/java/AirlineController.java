@@ -1,14 +1,13 @@
 import java.io.Serializable;
-import models.Airline;
 
 /**
  * Class that manages the airline functions and calls the AirlineServiceH2 methods
  */
 public class AirlineController implements Serializable {
 
-	private AirlineServiceMysql as_mysql = new AirlineServiceMysql();
+	private AirlineServiceMysql service = new AirlineServiceMysql();
 
-    public void printaAirline(String airline_concat){
+    public void createAirline(String airline_concat){
     	String[] airline_infos = airline_concat.split(",");
 
 		Airline airline = new Airline();
@@ -16,6 +15,9 @@ public class AirlineController implements Serializable {
 		airline.set_name(airline_infos[1]);
 
 		System.out.println(airline);
+		service.createAirline(airline);
+		
+		System.out.println(service.getAllAirlines());
 
     }
 }

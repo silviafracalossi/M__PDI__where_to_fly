@@ -28,8 +28,8 @@ public class AirlineETL {
 
 		// Creating instances of Airline
 		airlines_data.foreach((airline) -> {
-			if (airline.equals(airline_header)) {
-				controller.printaAirline(airline);
+			if (!airline.equals(airline_header)) {
+				controller.createAirline(airline);
 			}
 		});
 
