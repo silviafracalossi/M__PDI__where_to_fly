@@ -7,7 +7,7 @@ class X_ShowGeneratedHtml {
 
     try {
 
-      BufferedReader br = new BufferedReader(new FileReader("ex_out/part-00000"));
+      BufferedReader airlines_br = new BufferedReader(new FileReader("../parsed_data/airlines/part-00000"));
 
       File f = new File("source.htm");
       BufferedWriter bw = new BufferedWriter(new FileWriter(f));
@@ -16,10 +16,8 @@ class X_ShowGeneratedHtml {
       bw.write("<h1>ShowGeneratedHtml source</h1>");
       bw.write("<textarea cols=75 rows=30>");
 
-      bw.write("textarea");
-
       String line;
-      while ((line = br.readLine()) != null) {
+      while ((line = airlines_br.readLine()) != null) {
           bw.write(line);
           bw.newLine();
       }
@@ -31,7 +29,7 @@ class X_ShowGeneratedHtml {
       bw.write("</body>");
       bw.write("</html>");
 
-      // br.close();
+      airlines_br.close();
       bw.close();
 
       Desktop.getDesktop().browse(f.toURI());
@@ -43,5 +41,4 @@ class X_ShowGeneratedHtml {
 
 
   }
-
 }

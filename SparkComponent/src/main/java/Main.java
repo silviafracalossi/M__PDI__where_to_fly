@@ -13,12 +13,9 @@ public class Main {
 	// -------------------------------------------------------
 
 	public static void main(String[] args) {
-		AirlineController controller = new AirlineController();
-		controller.createAirline("codice,nome");
-		
-//		AirlineETL airline_etl = new AirlineETL();
+		AirlineETL airline_etl = new AirlineETL();
 		// X_AirlinesParser ap = new X_AirlinesParser();
-//		X_ShowGeneratedHtml sgh = new X_ShowGeneratedHtml();
+		X_ShowGeneratedHtml sgh = new X_ShowGeneratedHtml();
 	}
 
 }
