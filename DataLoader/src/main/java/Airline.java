@@ -3,7 +3,6 @@ import java.io.Serializable;
 import javax.persistence.Id;
 import javax.persistence.*;
 
-
 /**
  * Class that represent the airline
  */
@@ -61,7 +60,7 @@ public class Airline implements Serializable {
     public boolean equals (Object obj) {
         if (obj instanceof Airline) {
             Airline o = (Airline) obj;
-            return (o.iata_code == this.iata_code);
+            return (o.iata_code.equals(this.iata_code));
         }
         return false;
     }
