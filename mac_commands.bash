@@ -1,6 +1,6 @@
 # Path to this folder
 # d:
-# cd \Uni\repositories\PDI\pdi2019-project\SparkComponent
+# cd \Uni\repositories\PDI\pdi2019-project
 
 # Remove folders of out files
 rm -rf parsed_data
