@@ -13,9 +13,13 @@ public class Main {
 	// -------------------------------------------------------
 
 	public static void main(String[] args) {
+
+	  // Starts the ETL processes
 		AirlineETL airline_etl = new AirlineETL();
-		// X_AirlinesParser ap = new X_AirlinesParser();
-		X_ShowGeneratedHtml sgh = new X_ShowGeneratedHtml();
+		AirportETL airport_etl = new AirportETL();
+
+		// Shows the last generated file
+		X_ShowGeneratedHtml sgh = new X_ShowGeneratedHtml("airports");
 	}
 
 }

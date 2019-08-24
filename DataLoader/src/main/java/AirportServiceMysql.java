@@ -17,19 +17,19 @@
  /**
     * Class that implements the concrete access to mysql database
     */
-   public class AirlineServiceMysql implements Serializable {
+   public class AirportServiceMysql implements Serializable {
 
-       public Session session;
+     public Session session;
 
-     public AirlineServiceMysql (Session session) {
+     public AirportServiceMysql (Session session) {
          this.session = session;
      }
 
        /**
-        * Adds a new airline to the DB
-        * @param a - airline to be inserted
+        * Adds a new airport to the DB
+        * @param a - airport to be inserted
         */
-       public void createAirline (Airline a) {
+       public void createAirport (Airport a) {
            try {
                System.out.println("[INFO] Creating " +a);
                session.beginTransaction();
@@ -37,17 +37,17 @@
                session.getTransaction().commit();
            } catch (Exception e) {
          	  Boolean found = false;
-         	  List<Airline> all_airlines = getAllAirlines();
-         	  for (int i = 0; i < all_airlines.size(); i++) {
-         		  if (all_airlines.get(i).equals(a)) {
+         	  List<Airport> all_airports = getAllAirports();
+         	  for (int i = 0; i < all_airports.size(); i++) {
+         		  if (all_airports.get(i).equals(a)) {
          			  found = true;
          			  break;
          		  }
          		}
          	  if (found) {
-         		  System.out.println("[WARN] Inserting airline \""+a.get_iata_code()+"\" already present in DB");
+         		  System.out.println("[WARN] Inserting airport \""+a.get_iata_code()+"\" already present in DB");
          	  } else {
-         		  System.out.println("[ERROR] Errors while creating new airline");
+         		  System.out.println("[ERROR] Errors while creating new airport");
                    e.printStackTrace();
          	  }
            } finally {
@@ -58,10 +58,10 @@
        }
 
        /**
-        * Deletes the airline from the DB
-        * @param a - airline to be deleted
+        * Deletes the airport from the DB
+        * @param a - airport to be deleted
         */
-       public void deleteAirline (Airline a) {
+       public void deleteAirport (Airport a) {
            System.out.println("[INFO] Deleting " +a);
            session.beginTransaction();
            session.delete(a);
@@ -69,10 +69,10 @@
        }
 
        /**
-        * Updates the airline in the DB
-        * @param a - airline to be updated with new information
+        * Updates the airport in the DB
+        * @param a - airport to be updated with new information
         */
-       public void updateAirline (Airline a) {
+       public void updateAirport (Airport a) {
            System.out.println("[INFO] Updating " +a);
            session.beginTransaction();
            session.update(a);
@@ -80,11 +80,11 @@
        }
 
        /**
-        * Retrieves all the airlines stored in DB
-        * @return list of all airlines
+        * Retrieves all the airports stored in DB
+        * @return list of all airports
         */
-       public List<Airline> getAllAirlines() {
-           return session.createQuery("from Airline a").list();
+       public List<Airport> getAllAirports() {
+           return session.createQuery("from Airport a").list();
        }
 
 

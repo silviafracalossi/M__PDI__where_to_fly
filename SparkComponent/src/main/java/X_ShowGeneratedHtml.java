@@ -3,11 +3,11 @@ import java.io.*;
 
 class X_ShowGeneratedHtml {
 
-  public X_ShowGeneratedHtml() {
+  public X_ShowGeneratedHtml(String entity) {
 
     try {
 
-      BufferedReader airlines_br = new BufferedReader(new FileReader("../parsed_data/airlines/part-00000"));
+      BufferedReader display_file_br = new BufferedReader(new FileReader("../parsed_data/"+entity+"/part-00000"));
 
       File f = new File("source.htm");
       BufferedWriter bw = new BufferedWriter(new FileWriter(f));
@@ -17,7 +17,7 @@ class X_ShowGeneratedHtml {
       bw.write("<textarea cols=75 rows=30>");
 
       String line;
-      while ((line = airlines_br.readLine()) != null) {
+      while ((line = display_file_br.readLine()) != null) {
           bw.write(line);
           bw.newLine();
       }
@@ -29,14 +29,13 @@ class X_ShowGeneratedHtml {
       bw.write("</body>");
       bw.write("</html>");
 
-      airlines_br.close();
+      display_file_br.close();
       bw.close();
 
       Desktop.getDesktop().browse(f.toURI());
 
     } catch(Exception e) {
       System.out.println(e);
-      System.out.println("ciao");
     }
 
 

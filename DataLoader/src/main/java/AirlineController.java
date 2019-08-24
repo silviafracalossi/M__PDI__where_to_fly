@@ -1,3 +1,5 @@
+import org.hibernate.Session;
+
 import java.io.Serializable;
 import java.util.*;
 
@@ -7,15 +9,17 @@ import java.util.*;
  public class AirlineController implements Serializable {
 
     // Serves database-application communication
- 	private AirlineServiceMysql service = new AirlineServiceMysql();
+    private AirlineServiceMysql service;
+
+     public AirlineController (Session session) {
+         service = new AirlineServiceMysql(session);
+     }
 
 
      public void createMultipleAirlines(List<String> airlines) {
          for (int i = 0; i < airlines.size(); i++) {
              createAirline(airlines.get(i));
          }
-
-
      }
 
      public void createAirline(String airline_concat){

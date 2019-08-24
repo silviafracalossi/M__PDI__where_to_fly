@@ -11,7 +11,6 @@ public class AirlineETL {
 		String airlines_csv = "../data/kaggle_airlines.csv";
 		String outputPath = "../parsed_data/airlines";
 
-
 		// Create a Spark Session object and set the name of the application
 		SparkSession ss = SparkSession.builder().appName("Airlines Filtering Data").getOrCreate();
 
@@ -19,7 +18,6 @@ public class AirlineETL {
 		JavaSparkContext sc = new JavaSparkContext(ss.sparkContext());
 
 		// Getting data from airlines file
-		// Structure of airlines: IATA code, name
 		JavaRDD<String> airlines_data = sc.textFile(airlines_csv);
 
 		// Creating instances of Airline
