@@ -1,0 +1,14 @@
+<hibernate-mapping>
+
+    <class name="Airport" table="AIRPORT">
+        <meta attribute = "class-description">This class contains the details of Airports.</meta>
+        <id name="iata_code" column="IATA_CODE" type="java.lang.String"><generator class="assigned"/></id>
+        <property name="name" column="NAME" type="java.lang.String" />
+        <property name="city" column="CITY" type="java.lang.String" />
+        <property name="state" column="STATE" type="java.lang.String" />
+        <property name="country" column="COUNTRY" type="java.lang.String" />
+        <property name="lat" column="LAT" type="java.lang.String" />
+        <property name="lng" column="LNG" type="java.lang.String" />
+    </class>
+
+</hibernate-mapping>
