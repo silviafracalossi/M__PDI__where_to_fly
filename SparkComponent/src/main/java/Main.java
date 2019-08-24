@@ -14,7 +14,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-	  // Starts the ETL processes
+	  	// Starts the ETL processes
 		AirlineETL airline_etl = new AirlineETL();
 		AirportETL airport_etl = new AirportETL();
 

@@ -1,6 +1,6 @@
+
+
 /*
-
-
 public static void main(String[] args) {
         // configure spark
         SparkConf sparkConf = new SparkConf().setAppName("Spark RDD filter")
@@ -28,7 +28,4 @@ public static void main(String[] args) {
         });
 
         sc.close();
-    }
-
-
-    */
+    }*/

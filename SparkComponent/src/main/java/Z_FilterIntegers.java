@@ -1,6 +1,6 @@
+
+
 /*
-
-
 public static void main(String[] args) {
         // configure spark
         SparkConf sparkConf = new SparkConf().setAppName("Spark RDD Filter")
@@ -8,22 +8,19 @@ public static void main(String[] args) {
         // start a spark context
         JavaSparkContext sc = new JavaSparkContext(sparkConf);
         // read list to RDD
-        List<Integer> data = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10); 
+        List<Integer> data = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         JavaRDD<Integer> rdd = sc.parallelize(data,1);
-        
+
         // filter : where the number (rdd element) is exactly divisible by 3
         Function<Integer, Boolean> filter = k -> ( k % 3 == 0);
-        
+
         // apply filter on rdd with filter passed as argument
         JavaRDD<Integer> rddf = rdd.filter(filter);
         // print the filtered rdd
         rddf.foreach(element -> {
-            System.out.println(element); 
+            System.out.println(element);
         });
-        
+
         sc.close();
     }
-
-
-
 */

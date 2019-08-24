@@ -1,10 +1,8 @@
-import org.hibernate.Session;
 
-import java.util.ArrayList;
+import org.hibernate.Session;
 import java.util.List;
 
 public class Main {
-
 
 	public static void main(String[] args) {
 
@@ -28,7 +26,6 @@ public class Main {
 
 		System.out.println("------Execution completed------");
 
-		// TODO trovare un modo per filtrare già gli aeroporti che non hanno LAT e LNG
 		// TODO scrivere un po di documentazione
 
 	}

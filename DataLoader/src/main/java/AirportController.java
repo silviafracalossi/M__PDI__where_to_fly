@@ -24,19 +24,16 @@ import java.util.*;
      public void createAirport(String airport_concat){
      	String[] airport_infos = airport_concat.split(",");
 
-     	if (airport_infos.length == 7) {
-            Airport airport = new Airport();
-            airport.set_iata_code(airport_infos[0]);
-            airport.set_name(airport_infos[1]);
-            airport.set_city(airport_infos[2]);
-            airport.set_state(airport_infos[3]);
-            airport.set_country(airport_infos[4]);
-            airport.set_lat(airport_infos[5]);
-            airport.set_lng(airport_infos[6]);
-            createAirport(airport);
-        } else {
-     	    System.out.println("[WARN] Found a problem with the following airport: " + airport_concat);
-        }
+        Airport airport = new Airport();
+        airport.set_iata_code(airport_infos[0]);
+        airport.set_name(airport_infos[1]);
+        airport.set_city(airport_infos[2]);
+        airport.set_state(airport_infos[3]);
+        airport.set_country(airport_infos[4]);
+        airport.set_lat(airport_infos[5]);
+        airport.set_lng(airport_infos[6]);
+        createAirport(airport);
+
      }
 
      public void createAirport(Airport a) {
