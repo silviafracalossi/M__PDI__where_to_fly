@@ -1,0 +1,9 @@
+<hibernate-mapping>
+
+    <class name="Airline" table="AIRLINE">
+        <meta attribute = "class-description">This class contains the details of Airlines.</meta>
+        <id name="iata_code" column="IATA_CODE" type="java.lang.String"><generator class="assigned"/></id>
+        <property name="name" column="NAME" type="java.lang.String" />
+    </class>
+
+</hibernate-mapping>

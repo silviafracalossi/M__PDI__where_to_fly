@@ -1,4 +1,17 @@
+# Project Ignore
+.project
+data
+parsed_data
+
+# SparkComponent Ignore
 SparkComponent/target
-SparkComponent/ex_data
-SparkComponent/ex_out
 SparkComponent/.idea
+SparkComponent/.classpath
+SparkComponent/.settings
+SparkComponent/source.htm
+SparkComponent/FlightsProject.iml
+
+# DataLoader Ignore
+DataLoader/.idea
+DataLoader/target
+DataLoader/DataLoader.iml

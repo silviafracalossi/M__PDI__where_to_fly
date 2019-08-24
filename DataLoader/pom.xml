@@ -4,10 +4,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>GroupId</groupId>
-  <artifactId>SparkComponent</artifactId>
+  <artifactId>DataLoader</artifactId>
   <version>1.0.0</version>
   <packaging>jar</packaging>
-  <name>"SparkComponent"</name>
+  <name>"DataLoader"</name>
 
   <repositories>
     <repository>
@@ -25,6 +25,7 @@
   <build>
     <plugins>
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.1</version>
         <configuration>
@@ -37,25 +38,19 @@
 
   <dependencies>
 
-	<!-- Spark -->
+    <!-- MySQL -->
     <dependency>
-      <groupId>org.apache.spark</groupId>
-      <artifactId>spark-core_2.11</artifactId>
-      <version>2.2.0.cloudera2</version>
-      <scope>provided</scope>
-   </dependency>
-
-   <dependency>
-      <groupId>org.apache.spark</groupId>
-      <artifactId>spark-sql_2.11</artifactId>
-      <version>2.2.0.cloudera2</version>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>5.1.40</version>
     </dependency>
 
-    <dependency>
-      <groupId>org.apache.spark</groupId>
-      <artifactId>spark-mllib_2.11</artifactId>
-      <version>2.2.0.cloudera2</version>
-    </dependency>
+	<!-- Hibernate -->
+  <dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.2.6.Final</version>
+		</dependency>
 
 	<!-- XML bind -->
     <dependency>
