@@ -9,7 +9,8 @@ SparkComponent/.idea
 SparkComponent/.classpath
 SparkComponent/.settings
 SparkComponent/source.htm
-SparkComponent/FlightsProject.iml
+SparkComponent/SparkComponent.iml
+SparkComponent/command-spark-submit.bat
 
 # DataLoader Ignore
 DataLoader/.idea
