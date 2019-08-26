@@ -29,11 +29,15 @@ public class Main {
 		content = dfr.ParseFile("routes", false);
 		route_controller.createMultipleRoutes(content);
 
+		//Flights loader
+		FlightController flight_controller = new FlightController(db_session);
+		content = dfr.ParseFile("flights", false);
+		flight_controller.createMultipleFlights(content);
 
 		System.out.println("------Execution completed------");
+		System.exit(0);
 
 		// TODO scrivere un po di documentazione
-		// TODO flight: FLIGHT_NUMBER|SCHEDULED_DEPARTURE|DEPARTURE_TIME|SCHEDULED_ARRIVAL|ARRIVAL_TIME|ROUTE_CODE|DATE
 
 	}
 

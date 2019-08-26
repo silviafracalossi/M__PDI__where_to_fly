@@ -22,6 +22,7 @@
     <mapping class="Airline" resource="airline.hbm.xml"/>
     <mapping class="Airport" resource="airport.hbm.xml"/>
     <mapping class="Route" resource="route.hbm.xml"/>
+    <mapping class="Flight" resource="flight.hbm.xml"/>
 
 </session-factory>
 

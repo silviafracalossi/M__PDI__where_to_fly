@@ -1,0 +1,14 @@
+<hibernate-mapping>
+
+    <class name="Flight" table="FLIGHT">
+        <meta attribute = "class-description">This class contains the details of Flights.</meta>
+        <id name="flight_number" column="FLIGHT_NUMBER" type="java.lang.String"><generator class="assigned"/></id>
+        <property name="route_code" column="ROUTE_CODE" type="java.lang.String" />
+        <property name="date" column="DATE" type="java.util.Date" />
+        <property name="scheduled_departure" column="SCHEDULED_DEPARTURE" type="java.sql.Time" />
+        <property name="departure_time" column="DEPARTURE_TIME" type="java.sql.Time" />
+        <property name="scheduled_arrival" column="SCHEDULED_ARRIVAL" type="java.sql.Time" />
+        <property name="arrival_time" column="ARRIVAL_TIME" type="java.sql.Time" />
+    </class>
+
+</hibernate-mapping>
