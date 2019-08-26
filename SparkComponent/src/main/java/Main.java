@@ -14,15 +14,14 @@ public class Main {
 
 	public static void main(String[] args) {
 
-	  	// Starts the ETL processes
+	    // Starts the ETL processes
 		// AirlineETL airline_etl = new AirlineETL();
 		// AirportETL airport_etl = new AirportETL();
 		FlightETL flight_etl = new FlightETL();
 
 		// Shows the last generated file
-		X_ShowGeneratedHtml rgh = new X_ShowGeneratedHtml("routes");
+		X_ShowGeneratedHtml rgh = new X_ShowGeneratedHtml("flights");
 
-		// TODO invertire nell er i valori per departure con quelli di arrival
 	}
 
 }

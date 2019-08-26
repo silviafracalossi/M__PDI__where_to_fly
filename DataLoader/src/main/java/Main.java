@@ -22,12 +22,12 @@ public class Main {
 		// Airports loader
 		AirportController airport_controller = new AirportController(db_session);
 		content = dfr.ParseFile("airports", true);
-		airport_controller.createMultipleAirports(content);*/
+		airport_controller.createMultipleAirports(content);
 
 		//Routes loader
 		RouteController route_controller = new RouteController(db_session);
 		content = dfr.ParseFile("routes", false);
-		route_controller.createMultipleRoutes(content);
+		route_controller.createMultipleRoutes(content);*/
 
 		//Flights loader
 		FlightController flight_controller = new FlightController(db_session);
@@ -38,6 +38,7 @@ public class Main {
 		System.exit(0);
 
 		// TODO scrivere un po di documentazione
+		// TODO invertire nell er i valori per departure con quelli di arrival
 
 	}
 

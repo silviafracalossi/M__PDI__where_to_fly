@@ -17,9 +17,11 @@ public class Flight implements Serializable {
     @Column(name = "FLIGHT_NUMBER")
     private String flight_number;
 
+    @Id
     @Column(name = "ROUTE_CODE")
     private String route_code;
 
+    @Id
     @Column(name = "DATE")
     private Date date;
 
@@ -157,7 +159,9 @@ public class Flight implements Serializable {
     public boolean equals (Object obj) {
         if (obj instanceof Flight) {
             Flight o = (Flight) obj;
-            return (o.flight_number.equals(this.flight_number));
+            return (o.flight_number.equals(this.flight_number))
+                    && (o.date.equals(this.date))
+                    && (o.route_code.equals(this.route_code));
         }
         return false;
     }

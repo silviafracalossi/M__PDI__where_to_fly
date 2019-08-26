@@ -1,8 +1,6 @@
 
 import org.apache.spark.sql.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
 import org.apache.spark.api.java.JavaSparkContext;
 import static org.apache.spark.sql.functions.*;
 
@@ -10,7 +8,11 @@ public class FlightETL implements Serializable {
 
     public FlightETL () {
 
+        // TODO remove flight number
+        // TODO remove flights with no arrival date, scheduled arrival, departure, scheduled departure
+
         // CSV source path and output path definition
+        //String flights_csv = "../data/kaggle_flights.csv";
         String flights_csv = "../data/flights_short.csv";
         String outputFlightPath = "../parsed_data/flights";
         String outputRoutePath = "../parsed_data/routes";
@@ -21,7 +23,7 @@ public class FlightETL implements Serializable {
         // Create a Java Spark Context from the Spark Session
         JavaSparkContext sc = new JavaSparkContext(ss.sparkContext());
 
-        // --------- Elaborating ROUTES entity ---------
+        /* --------- Elaborating ROUTES entity ---------
 
         // Loading data into a dataset
         Dataset<Row> route_df = ss.read()
@@ -54,7 +56,7 @@ public class FlightETL implements Serializable {
         route_df.show();
 
         // stores data into file
-        route_df.javaRDD().saveAsTextFile(outputRoutePath);
+        route_df.javaRDD().saveAsTextFile(outputRoutePath);*/
 
 
         // --------- Elaborating FLIGTHS entity ---------
@@ -66,7 +68,7 @@ public class FlightETL implements Serializable {
                 .load(flights_csv);
 
         // Removing useless columns except:
-        // route_code information, date information, flight_number, arrival_time, scheduled_arrival, departure_time, scheduled_departure
+        // route_code information, date information, arrival_time, scheduled_arrival, departure_time, scheduled_departure
         String[] flight_cols_to_drop = {"DAY_OF_WEEK", "TAIL_NUMBER", "DEPARTURE_DELAY", "TAXI_OUT", "WHEELS_OFF",
                 "SCHEDULED_TIME", "ELAPSED_TIME", "AIR_TIME", "DISTANCE", "WHEELS_ON", "TAXI_IN", "ARRIVAL_DELAY",
                 "DIVERTED", "CANCELLED", "CANCELLATION_REASON", "AIR_SYSTEM_DELAY", "SECURITY_DELAY", "AIRLINE_DELAY",
@@ -96,6 +98,12 @@ public class FlightETL implements Serializable {
         for (String colName : flight_other_cols_to_drop) {
             flight_df = flight_df.drop(colName);
         }
+
+        // remove rows with nulls in the departure and arrival times
+        flight_df = flight_df.filter(flight_df.col("DEPARTURE_TIME").isNotNull());
+        flight_df = flight_df.filter(flight_df.col("SCHEDULED_DEPARTURE").isNotNull());
+        flight_df = flight_df.filter(flight_df.col("ARRIVAL_TIME").isNotNull());
+        flight_df = flight_df.filter(flight_df.col("SCHEDULED_ARRIVAL").isNotNull());
 
         // stores data into file
         flight_df.javaRDD().saveAsTextFile(outputFlightPath);
