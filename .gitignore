@@ -2,6 +2,7 @@
 .project
 data
 parsed_data
+parsed_data_backup
 
 # SparkComponent Ignore
 SparkComponent/target
