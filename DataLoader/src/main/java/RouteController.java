@@ -10,8 +10,10 @@ public class RouteController implements Serializable {
 
     // Serves database-application communication
     private RouteServiceMysql service;
+    private AirportController ac;
 
     public RouteController (Session session) {
+        ac = new AirportController(session);
         service = new RouteServiceMysql(session);
     }
 
@@ -22,7 +24,7 @@ public class RouteController implements Serializable {
         }
     }
 
-    // Data structure in file: AIRLINE|ORIGIN_AIRPORT|DESTINATION_AIRPORT|ROUTE_CODE
+    // Data structure in file: ORIGIN_AIRPORT|DESTINATION_AIRPORT|ROUTE_CODE
     public void createRoute(String route_concat){
 
         // Remove the initial "[" and the final "]" characters
@@ -30,18 +32,37 @@ public class RouteController implements Serializable {
             route_concat = route_concat.substring(1, route_concat.length()-1);
         }
 
+        // Splitting route
         String[] route_infos = route_concat.split(",");
-        System.out.println(route_concat);
+        Airport origin_airport = ac.getAirportByPk(route_infos[0]);
+        Airport destination_airport = ac.getAirportByPk(route_infos[1]);
 
-         Route route = new Route();
-         route.set_airline(route_infos[0]);
-         route.set_origin_airport(route_infos[1]);
-         route.set_destination_airport(route_infos[2]);
-         route.set_route_code(route_infos[3]);
-         createRoute(route);
+        // Checking if there is a correspondence
+        if (origin_airport.get_iata_code() != null && destination_airport.get_iata_code() != null) {
+            Route route = new Route();
+            route.set_origin_airport(origin_airport);
+            route.set_destination_airport(destination_airport);
+            route.set_route_code(route_infos[2]);
+            createRoute(route);
+        } else {
+            System.out.println("[WARN] No airport correspondence while creating route");
+        }
+
     }
 
     public void createRoute(Route r) {
         service.createRoute(r);
+    }
+
+    public List<Route> getAllRoutes() {
+        return service.getAllRoutes();
+    }
+
+    public Route getRouteByPk(String route_code) {
+        return service.getRouteByPk(route_code);
+    }
+
+    public List<Route> getAllCompleteRoutes () {
+        return service.getAllCompleteRoutes();
     }
 }

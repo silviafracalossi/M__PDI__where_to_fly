@@ -34,15 +34,13 @@ public class FlightETL implements Serializable {
                 "SCHEDULED_DEPARTURE", "DEPARTURE_TIME", "DEPARTURE_DELAY", "TAXI_OUT", "WHEELS_OFF", "SCHEDULED_TIME",
                 "ELAPSED_TIME", "AIR_TIME", "DISTANCE", "WHEELS_ON", "TAXI_IN", "SCHEDULED_ARRIVAL", "ARRIVAL_TIME",
                 "ARRIVAL_DELAY", "DIVERTED", "CANCELLED", "CANCELLATION_REASON", "AIR_SYSTEM_DELAY", "SECURITY_DELAY",
-                "AIRLINE_DELAY", "LATE_AIRCRAFT_DELAY", "WEATHER_DELAY"};
+                "AIRLINE_DELAY", "LATE_AIRCRAFT_DELAY", "WEATHER_DELAY", "AIRLINE"};
         for (String colName : route_cols_to_drop) {
             route_df = route_df.drop(colName);
         }
 
         // add column to ds
         route_df = route_df.withColumn("ROUTE_CODE", concat(
-                route_df.col("AIRLINE"),
-                lit("_"),
                 route_df.col("ORIGIN_AIRPORT"),
                 lit("_"),
                 route_df.col("DESTINATION_AIRPORT")));
@@ -74,8 +72,6 @@ public class FlightETL implements Serializable {
 
         // Add route code to df
         flight_df = flight_df.withColumn("ROUTE_CODE", concat(
-                flight_df.col("AIRLINE"),
-                lit("_"),
                 flight_df.col("ORIGIN_AIRPORT"),
                 lit("_"),
                 flight_df.col("DESTINATION_AIRPORT")));
@@ -89,7 +85,7 @@ public class FlightETL implements Serializable {
                 flight_df.col("YEAR")));
 
         // Columns to drop after transformation of them into unique field
-        String[] flight_other_cols_to_drop = {"AIRLINE", "ORIGIN_AIRPORT", "DESTINATION_AIRPORT", "DAY", "MONTH", "YEAR"};
+        String[] flight_other_cols_to_drop = {"ORIGIN_AIRPORT", "DESTINATION_AIRPORT", "DAY", "MONTH", "YEAR"};
         for (String colName : flight_other_cols_to_drop) {
             flight_df = flight_df.drop(colName);
         }

@@ -87,5 +87,23 @@
            return session.createQuery("from Airport a").list();
        }
 
+        // ----- METHODS USED FOR FOREIGN KEY -----
+
+        public Airport getAirportByPk (String iata_code) {
+            List<Airport> airports = session.createQuery("from Airport a where a.iata_code LIKE :iata_parameter")
+                    .setParameter("iata_parameter", "%"+iata_code+"%")
+                    .list();
+            return (airports.size() > 0) ? airports.get(0) : new Airport();
+        }
+
+        public Airport getAirportByCityState (String city, String state) {
+            List<Airport> airports = session.createQuery(
+                    "from Airport a where a.city LIKE :city_parameter and a.state LIKE :state_parameter")
+                    .setParameter("city_parameter", "%"+city+"%")
+                    .setParameter("state_parameter", "%"+state+"%")
+                    .list();
+            return (airports.size() > 0) ? airports.get(0) : new Airport();
+        }
+
 
  }

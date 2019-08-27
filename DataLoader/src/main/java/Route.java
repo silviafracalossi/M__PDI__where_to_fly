@@ -15,14 +15,11 @@ public class Route implements Serializable {
     @Column(name = "ROUTE_CODE")
     private String route_code;
 
-    @Column(name = "AIRLINE")
-    private String airline;
-
     @Column(name = "ORIGIN_AIRPORT")
-    private String origin_airport;
+    private Airport origin_airport;
 
     @Column(name = "DESTINATION_AIRPORT")
-    private String destination_airport;
+    private Airport destination_airport;
 
 
     /**
@@ -42,26 +39,10 @@ public class Route implements Serializable {
     }
 
     /**
-     * Accesses the airline
-     * @return airline of calling route
-     */
-    public String get_airline() {
-        return airline;
-    }
-
-    /**
-     * Changes the airline
-     * @param airline new airline
-     */
-    public void set_airline(String airline) {
-        this.airline = airline;
-    }
-
-    /**
      * Accesses the origin_airport
      * @return origin_airport of calling route
      */
-    public String get_origin_airport() {
+    public Airport get_origin_airport() {
         return origin_airport;
     }
 
@@ -69,7 +50,7 @@ public class Route implements Serializable {
      * Changes the origin_airport
      * @param origin_airport new origin_airport
      */
-    public void set_origin_airport(String origin_airport) {
+    public void set_origin_airport(Airport origin_airport) {
         this.origin_airport = origin_airport;
     }
 
@@ -77,7 +58,7 @@ public class Route implements Serializable {
      * Accesses the destination_airport
      * @return destination_airport of calling route
      */
-    public String get_destination_airport() {
+    public Airport get_destination_airport() {
         return destination_airport;
     }
 
@@ -85,7 +66,7 @@ public class Route implements Serializable {
      * Changes the destination_airport
      * @param destination_airport new destination_airport
      */
-    public void set_destination_airport(String destination_airport) {
+    public void set_destination_airport(Airport destination_airport) {
         this.destination_airport = destination_airport;
     }
 
@@ -109,8 +90,8 @@ public class Route implements Serializable {
      */
     @Override
     public String toString() {
-        return "Route: ROUTE code = " + this.route_code + ", from airport " + this.origin_airport + " to " + this.destination_airport +
-                ", with airline" + this.airline + ";";
+        return "Route: ROUTE code = " + this.route_code + ", from airport (" + this.origin_airport.get_iata_code() + ") to ("
+                + this.destination_airport.get_iata_code() + ");";
     }
 
 }

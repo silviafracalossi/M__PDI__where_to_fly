@@ -1,18 +1,7 @@
 
- import org.hibernate.cfg.Configuration;
  import java.util.*;
- import org.hibernate.*;
- import org.hibernate.cfg.*;
  import java.io.Serializable;
- import java.sql.Connection;
- import java.sql.DriverManager;
- import java.sql.SQLException;
  import org.hibernate.Session;
- import org.hibernate.SessionFactory;
- import org.hibernate.boot.MetadataSources;
- import org.hibernate.boot.registry.StandardServiceRegistry;
- import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
- import org.hibernate.exception.ConstraintViolationException;
 
  /**
     * Class that implements the concrete access to mysql database
@@ -79,13 +68,36 @@
            session.getTransaction().commit();
        }
 
-       /**
+        // ----- METHODS USED FOR FOREIGN KEY -----
+
+        /**
         * Retrieves all the routes stored in DB
-        * @return list of all routes
+        * @param route_code pk of route
+        * @return route with "route_code" as pk
         */
-       public List<Route> getAllRoutes() {
-           return session.createQuery("from Route r").list();
-       }
+        public Route getRouteByPk(String route_code) {
+            List<Route> routes = session.createQuery("from Route r where r.route_code LIKE :parameter")
+                    .setParameter("parameter", "%"+route_code+"%")
+                    .list();
+
+            return (routes.size() > 0) ? routes.get(0) : new Route();
+        }
+
+         /**
+          * Retrieves all the routes stored in DB
+          * @return list of all routes
+          */
+         public List<Route> getAllRoutes() {
+             return session.createQuery("from Route r").list();
+         }
+
+        /**
+        * Retrieves all the routes stored in DB, along with airport information
+        * @return list of all routes with airports infos
+        */
+        public List<Route> getAllCompleteRoutes() {
+         return session.createQuery("from Route r").list();
+     }
 
 
  }

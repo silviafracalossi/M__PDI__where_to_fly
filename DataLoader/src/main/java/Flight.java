@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.sql.Time;
 
 /**
- * Class that represent the flight -  FLIGHT_NUMBER|SCHEDULED_DEPARTURE|DEPARTURE_TIME|SCHEDULED_ARRIVAL|ARRIVAL_TIME|ROUTE_CODE|DATE
+ * Class that represent the flight
  */
 @Entity
 @Table(name = "FLIGHTS")
@@ -24,6 +24,9 @@ public class Flight implements Serializable {
     @Id
     @Column(name = "DATE")
     private Date date;
+
+    @Column(name = "AIRLINE")
+    private String airline;
 
     @Column(name = "SCHEDULED_DEPARTURE")
     private Time scheduled_departure;
@@ -84,6 +87,22 @@ public class Flight implements Serializable {
      */
     public void set_date(Date date) {
         this.date = date;
+    }
+
+    /**
+     * Accesses the airline
+     * @return airline of calling flight
+     */
+    public String get_airline() {
+        return airline;
+    }
+
+    /**
+     * Changes the airline
+     * @param airline new airline
+     */
+    public void set_airline(String airline) {
+        this.airline = airline;
     }
 
     /**
@@ -173,8 +192,9 @@ public class Flight implements Serializable {
     @Override
     public String toString() {
         return "Flight number " + this.flight_number + ", route_code = " + this.route_code + ", on " + this.date +
-                "; Scheduled departure: " + this.scheduled_departure + ", actual one: " + this.departure_time +
-                "; Scheduled arrival " + this.scheduled_arrival + ", actual one: " + this.arrival_time + ";";
+                "with airline +" + this.airline + "; Scheduled departure: " + this.scheduled_departure +
+                ", actual one: " + this.departure_time + "; Scheduled arrival " + this.scheduled_arrival +
+                ", actual one: " + this.arrival_time + ";";
     }
 
 }
