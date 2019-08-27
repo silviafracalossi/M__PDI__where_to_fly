@@ -12,7 +12,7 @@ class X_ShowGeneratedHtml {
       bw.write("<html>");
       bw.write("<body>");
       bw.write("<h1>ShowGeneratedHtml source</h1>");
-      bw.write("<textarea cols=75 rows=30>");
+      bw.write("<textarea cols=300 rows=30>");
 
       int i = 0;
       String a = "";

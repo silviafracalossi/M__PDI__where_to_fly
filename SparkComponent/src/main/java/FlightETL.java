@@ -8,11 +8,8 @@ public class FlightETL implements Serializable {
 
     public FlightETL () {
 
-        // TODO remove flight number
-        // TODO remove flights with no arrival date, scheduled arrival, departure, scheduled departure
-
         // CSV source path and output path definition
-        //String flights_csv = "../data/kaggle_flights.csv";
+        // String flights_csv = "../data/kaggle_flights.csv";
         String flights_csv = "../data/flights_short.csv";
         String outputFlightPath = "../parsed_data/flights";
         String outputRoutePath = "../parsed_data/routes";
@@ -23,7 +20,7 @@ public class FlightETL implements Serializable {
         // Create a Java Spark Context from the Spark Session
         JavaSparkContext sc = new JavaSparkContext(ss.sparkContext());
 
-        /* --------- Elaborating ROUTES entity ---------
+        // --------- Elaborating ROUTES entity ---------
 
         // Loading data into a dataset
         Dataset<Row> route_df = ss.read()
@@ -53,10 +50,8 @@ public class FlightETL implements Serializable {
         // drops duplicates
         route_df = route_df.dropDuplicates("ROUTE_CODE");
 
-        route_df.show();
-
         // stores data into file
-        route_df.javaRDD().saveAsTextFile(outputRoutePath);*/
+        route_df.javaRDD().saveAsTextFile(outputRoutePath);
 
 
         // --------- Elaborating FLIGTHS entity ---------
