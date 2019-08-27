@@ -3,6 +3,9 @@ import org.apache.spark.sql.*;
 import java.io.Serializable;
 import org.apache.spark.api.java.JavaSparkContext;
 
+import static org.apache.spark.sql.functions.col;
+import static org.apache.spark.sql.functions.regexp_replace;
+
 public class AirfareETL implements Serializable {
 
     public AirfareETL () {
@@ -10,7 +13,7 @@ public class AirfareETL implements Serializable {
         // CSV source path and output path definition
         // String airfare_csv = "../data/transportation_airfare.csv";
         String airfare_csv = "../data/airfare_short.csv";
-        String outputAirfarePath = "../parsed_data/airfares";
+        String outputAirfarePath = "../parsed_data/fares";
 
         // Create a Spark Session object and set the name of the application
         SparkSession ss = SparkSession.builder().appName("Airfares Filtering Data").getOrCreate();
@@ -31,6 +34,14 @@ public class AirfareETL implements Serializable {
         for (String colName : flight_cols_to_drop) {
             airfare_df = airfare_df.drop(colName);
         }
+
+        // Removing the coordinates and extra useless data from the dataset
+        airfare_df = airfare_df.withColumn("Geocoded_City1", regexp_replace(col("Geocoded_City1"), ", \\([0-9-., ]*\\)", ""));
+        airfare_df = airfare_df.withColumn("Geocoded_City2", regexp_replace(col("Geocoded_City2"), ", \\([0-9-., ]*\\)", ""));
+        airfare_df = airfare_df.withColumn("Geocoded_City1", regexp_replace(col("Geocoded_City1"), "\\([0-9-., ]*\\)", ""));
+        airfare_df = airfare_df.withColumn("Geocoded_City2", regexp_replace(col("Geocoded_City2"), "\\([0-9-., ]*\\)", ""));
+        airfare_df = airfare_df.withColumn("Geocoded_City1", regexp_replace(col("Geocoded_City1"), " ", ""));
+        airfare_df = airfare_df.withColumn("Geocoded_City2", regexp_replace(col("Geocoded_City2"), " ", ""));
 
         // Stores data into file
         airfare_df.javaRDD().saveAsTextFile(outputAirfarePath);
