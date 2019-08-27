@@ -79,6 +79,8 @@
            session.getTransaction().commit();
        }
 
+       // ----- METHODS USED FOR FOREIGN KEY -----
+
        /**
         * Retrieves all the flights stored in DB
         * @return list of all flights

@@ -72,6 +72,14 @@
 
         /**
         * Retrieves all the routes stored in DB
+        * @return list of all routes
+        */
+        public List<Route> getAllRoutes() {
+            return session.createQuery("from Route r").list();
+        }
+
+        /**
+        * Retrieves all the routes stored in DB
         * @param route_code pk of route
         * @return route with "route_code" as pk
         */
@@ -79,25 +87,7 @@
             List<Route> routes = session.createQuery("from Route r where r.route_code LIKE :parameter")
                     .setParameter("parameter", "%"+route_code+"%")
                     .list();
-
             return (routes.size() > 0) ? routes.get(0) : new Route();
         }
-
-         /**
-          * Retrieves all the routes stored in DB
-          * @return list of all routes
-          */
-         public List<Route> getAllRoutes() {
-             return session.createQuery("from Route r").list();
-         }
-
-        /**
-        * Retrieves all the routes stored in DB, along with airport information
-        * @return list of all routes with airports infos
-        */
-        public List<Route> getAllCompleteRoutes() {
-         return session.createQuery("from Route r").list();
-     }
-
 
  }

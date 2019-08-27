@@ -79,13 +79,27 @@
            session.getTransaction().commit();
        }
 
-       /**
+        // ----- METHODS USED FOR FOREIGN KEY -----
+
+        /**
         * Retrieves all the airlines stored in DB
         * @return list of all airlines
         */
-       public List<Airline> getAllAirlines() {
-           return session.createQuery("from Airline a").list();
-       }
+        public List<Airline> getAllAirlines() {
+         return session.createQuery("from Airline a").list();
+        }
+
+        /**
+        * Retrieves airline with given pk
+        * @param iata_code pk of airline
+        * @return airline with "iata_code" as pk
+        */
+        public Airline getAirlineByPk(String iata_code) {
+            List<Airline> airlines = session.createQuery("from Airline a where a.iata_code LIKE :parameter")
+                .setParameter("parameter", "%"+iata_code+"%")
+                .list();
+            return (airlines.size() > 0) ? airlines.get(0) : new Airline();
+        }
 
 
  }

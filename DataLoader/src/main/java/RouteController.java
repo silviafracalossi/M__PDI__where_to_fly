@@ -17,7 +17,6 @@ public class RouteController implements Serializable {
         service = new RouteServiceMysql(session);
     }
 
-
     public void createMultipleRoutes(List<String> routes) {
         for (int i = 0; i < routes.size(); i++) {
             createRoute(routes.get(i));
@@ -54,15 +53,12 @@ public class RouteController implements Serializable {
         service.createRoute(r);
     }
 
-    public List<Route> getAllRoutes() {
-        return service.getAllRoutes();
-    }
+    // ----- METHODS USED FOR FOREIGN KEY -----
+
+    public List<Route> getAllRoutes() { return service.getAllRoutes(); }
 
     public Route getRouteByPk(String route_code) {
         return service.getRouteByPk(route_code);
     }
 
-    public List<Route> getAllCompleteRoutes () {
-        return service.getAllCompleteRoutes();
-    }
 }

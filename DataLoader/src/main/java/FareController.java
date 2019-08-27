@@ -74,4 +74,9 @@ import java.util.*;
      public void createFare(Fare f) {
          service.createFare(f);
      }
+
+     // ----- METHODS USED FOR FOREIGN KEY -----
+
+     public List<Fare> getAllFares() { return service.getAllFares(); }
+
  }

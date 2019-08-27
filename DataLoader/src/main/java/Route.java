@@ -15,10 +15,12 @@ public class Route implements Serializable {
     @Column(name = "ROUTE_CODE")
     private String route_code;
 
-    @Column(name = "ORIGIN_AIRPORT")
+    @ManyToOne
+    @JoinColumn(name = "ORIGIN_AIRPORT")
     private Airport origin_airport;
 
-    @Column(name = "DESTINATION_AIRPORT")
+    @ManyToOne
+    @JoinColumn(name = "DESTINATION_AIRPORT")
     private Airport destination_airport;
 
 

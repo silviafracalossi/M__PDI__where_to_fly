@@ -13,9 +13,13 @@ import java.util.*;
 
     // Serves database-application communication
     private FlightServiceMysql service;
+    private AirlineController ac;
+    private RouteController rc;
 
      public FlightController (Session session) {
          service = new FlightServiceMysql(session);
+         ac = new AirlineController(session);
+         rc = new RouteController(session);
      }
 
      public void createMultipleFlights(List<String> flights) {
@@ -40,14 +44,20 @@ import java.util.*;
 
         // Creating flight by setting the new information
         try {
-            flight.set_airline(flight_infos[0]);
-            flight.set_flight_number(flight_infos[1]);
-            flight.set_scheduled_departure(new Time(time_formatter.parse(flight_infos[2]).getTime()));
-            flight.set_departure_time(new Time(time_formatter.parse(flight_infos[3]).getTime()));
-            flight.set_scheduled_arrival(new Time(time_formatter.parse(flight_infos[4]).getTime()));
-            flight.set_arrival_time(new Time(time_formatter.parse(flight_infos[5]).getTime()));
-            flight.set_route_code(flight_infos[6]);
-            flight.set_date(day_sdf.parse(flight_infos[7]));
+            Airline airline = ac.getAirlineByPk(flight_infos[0]);
+            Route route = rc.getRouteByPk(flight_infos[6]);
+
+            if (airline.get_iata_code() != null && route.get_route_code() != null) {
+                flight.set_airline_iata(airline);
+                flight.set_flight_number(flight_infos[1]);
+                flight.set_scheduled_departure(new Time(time_formatter.parse(flight_infos[2]).getTime()));
+                flight.set_departure_time(new Time(time_formatter.parse(flight_infos[3]).getTime()));
+                flight.set_scheduled_arrival(new Time(time_formatter.parse(flight_infos[4]).getTime()));
+                flight.set_arrival_time(new Time(time_formatter.parse(flight_infos[5]).getTime()));
+                flight.set_route_code(route);
+                flight.set_date(day_sdf.parse(flight_infos[7]));
+            }
+
         } catch (Exception e) {
             System.out.println("[ERROR] Errors creating the flight: " + flight_concat);
         }
@@ -58,4 +68,8 @@ import java.util.*;
      public void createFlight(Flight f) {
          service.createFlight(f);
      }
+
+     // ----- METHODS USED FOR FOREIGN KEY -----
+
+     public List<Flight> getAllFlights() { return service.getAllFlights(); }
  }

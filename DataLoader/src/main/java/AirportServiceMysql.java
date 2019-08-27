@@ -79,15 +79,15 @@
            session.getTransaction().commit();
        }
 
-       /**
+        // ----- METHODS USED FOR FOREIGN KEY -----
+
+        /**
         * Retrieves all the airports stored in DB
         * @return list of all airports
         */
-       public List<Airport> getAllAirports() {
-           return session.createQuery("from Airport a").list();
-       }
-
-        // ----- METHODS USED FOR FOREIGN KEY -----
+        public List<Airport> getAllAirports() {
+         return session.createQuery("from Airport a").list();
+        }
 
         public Airport getAirportByPk (String iata_code) {
             List<Airport> airports = session.createQuery("from Airport a where a.iata_code LIKE :iata_parameter")

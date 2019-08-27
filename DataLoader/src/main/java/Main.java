@@ -15,7 +15,7 @@ public class Main {
 		Session db_session = db_connector.session;
 
 		// Airlines loader
-		/*AirlineController airline_controller = new AirlineController(db_session);
+		AirlineController airline_controller = new AirlineController(db_session);
 		content = dfr.ParseFile("airlines", true);
 		airline_controller.createMultipleAirlines(content);
 
@@ -24,27 +24,23 @@ public class Main {
 		content = dfr.ParseFile("airports", true);
 		airport_controller.createMultipleAirports(content);
 
-		//Routes loader*/
-		/*RouteController route_controller = new RouteController(db_session);
+		//Routes loader
+		RouteController route_controller = new RouteController(db_session);
 		content = dfr.ParseFile("routes", false);
-		route_controller.createMultipleRoutes(content);*/
-		
-		/*Flights loader
+		route_controller.createMultipleRoutes(content);
+
+		// Flights loader
 		FlightController flight_controller = new FlightController(db_session);
 		content = dfr.ParseFile("flights", false);
-		flight_controller.createMultipleFlights(content);*/
+		flight_controller.createMultipleFlights(content);
 
 		 // Fares loader
 		 FareController fare_controller = new FareController(db_session);
 		 content = dfr.ParseFile("fares", false);
 		 fare_controller.createMultipleFares(content);
 
-
 		System.out.println("------Execution completed------");
 		System.exit(0);
-
-		// TODO attuare piano su appunti
-		// TODO collegare airlines a flights
 
 		// TODO DOCUMENTAZIONE
         //  scrivere un po di documentazione

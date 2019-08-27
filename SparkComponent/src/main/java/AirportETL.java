@@ -9,7 +9,6 @@ public class AirportETL {
 	public AirportETL () {
 
 		// CSV source path and output path definition
-		String airport_header = "IATA_CODE,AIRPORT,CITY,STATE,COUNTRY,LATITUDE,LONGITUDE";
 		String airports_csv = "../data/kaggle_airports.csv";
 		String outputPath = "../parsed_data/airports";
 

@@ -35,4 +35,13 @@ import java.util.*;
      public void createAirline(Airline a) {
          service.createAirline(a);
      }
+
+     // ----- METHODS USED FOR FOREIGN KEY -----
+
+     public List<Airline> getAllAirlines() { return service.getAllAirlines(); }
+
+     public Airline getAirlineByPk(String iata_code) {
+         return service.getAirlineByPk(iata_code);
+     }
+
  }

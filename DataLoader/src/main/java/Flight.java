@@ -18,15 +18,17 @@ public class Flight implements Serializable {
     private String flight_number;
 
     @Id
-    @Column(name = "ROUTE_CODE")
-    private String route_code;
+    @ManyToOne
+    @JoinColumn(name = "ROUTE_CODE")
+    private Route route_code;
 
     @Id
     @Column(name = "DATE")
     private Date date;
 
-    @Column(name = "AIRLINE")
-    private String airline;
+    @ManyToOne
+    @JoinColumn(name = "AIRLINE_IATA")
+    private Airline airline_iata;
 
     @Column(name = "SCHEDULED_DEPARTURE")
     private Time scheduled_departure;
@@ -61,7 +63,7 @@ public class Flight implements Serializable {
      * Accesses the route_code
      * @return route_code of calling flight
      */
-    public String get_route_code() {
+    public Route get_route_code() {
         return route_code;
     }
 
@@ -69,7 +71,7 @@ public class Flight implements Serializable {
      * Changes the route_code
      * @param route_code new route_code
      */
-    public void set_route_code(String route_code) {
+    public void set_route_code(Route route_code) {
         this.route_code = route_code;
     }
 
@@ -90,19 +92,19 @@ public class Flight implements Serializable {
     }
 
     /**
-     * Accesses the airline
-     * @return airline of calling flight
+     * Accesses the airline_iata
+     * @return airline_iata of calling flight
      */
-    public String get_airline() {
-        return airline;
+    public Airline get_airline_iata() {
+        return airline_iata;
     }
 
     /**
-     * Changes the airline
-     * @param airline new airline
+     * Changes the airline_iata
+     * @param airline_iata new airline_iata
      */
-    public void set_airline(String airline) {
-        this.airline = airline;
+    public void set_airline_iata(Airline airline_iata) {
+        this.airline_iata = airline_iata;
     }
 
     /**
@@ -191,8 +193,8 @@ public class Flight implements Serializable {
      */
     @Override
     public String toString() {
-        return "Flight number " + this.flight_number + ", route_code = " + this.route_code + ", on " + this.date +
-                "with airline +" + this.airline + "; Scheduled departure: " + this.scheduled_departure +
+        return "Flight number " + this.flight_number + ", route_code = " + this.route_code.get_route_code() + ", on " + this.date +
+                "with airline +" + this.airline_iata.get_iata_code() + "; Scheduled departure: " + this.scheduled_departure +
                 ", actual one: " + this.departure_time + "; Scheduled arrival " + this.scheduled_arrival +
                 ", actual one: " + this.arrival_time + ";";
     }
