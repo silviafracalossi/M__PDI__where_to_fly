@@ -13,7 +13,7 @@ public class DataLoader {
 		DataFileReader dfr = new DataFileReader();
 
 		// Airlines loader
-		/*AirlineController airline_controller = new AirlineController(db_session);
+		AirlineController airline_controller = new AirlineController(db_session);
 		content = dfr.ParseFile("airlines", true);
 		airline_controller.createMultipleAirlines(content);
 
@@ -30,7 +30,7 @@ public class DataLoader {
 		// Flights loader
 		FlightController flight_controller = new FlightController(db_session);
 		content = dfr.ParseFile("flights", false);
-		flight_controller.createMultipleFlights(content);*/
+		flight_controller.createMultipleFlights(content);
 
 		 // Fares loader
 		 FareController fare_controller = new FareController(db_session);

@@ -19,13 +19,6 @@ public class AirlineETL {
 		// Getting data from airlines file
 		JavaRDD<String> airlines_data = sc.textFile(airlines_csv);
 
-		// Creating instances of Airline
-		/*airlines_data.foreach((airline) -> {
-			if (!airline.equals(airline_header)) {
-				controller.createAirline(airline);
-			}
-		});*/
-
 		// Saving the content in a file
 		airlines_data.saveAsTextFile(outputPath);
 
