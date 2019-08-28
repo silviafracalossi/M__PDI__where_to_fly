@@ -38,8 +38,8 @@ public class AirfareETL implements Serializable {
         // Removing the coordinates and extra useless data from the dataset
         airfare_df = airfare_df.withColumn("Geocoded_City1", regexp_replace(col("Geocoded_City1"), ", \\([0-9-., ]*\\)", ""));
         airfare_df = airfare_df.withColumn("Geocoded_City2", regexp_replace(col("Geocoded_City2"), ", \\([0-9-., ]*\\)", ""));
-        airfare_df = airfare_df.withColumn("Geocoded_City1", regexp_replace(col("Geocoded_City1"), "\\([0-9-., ]*\\)", ""));
-        airfare_df = airfare_df.withColumn("Geocoded_City2", regexp_replace(col("Geocoded_City2"), "\\([0-9-., ]*\\)", ""));
+        airfare_df = airfare_df.withColumn("Geocoded_City1", regexp_replace(col("Geocoded_City1"), "\\([0-9-.,A-z ]*\\)", ""));
+        airfare_df = airfare_df.withColumn("Geocoded_City2", regexp_replace(col("Geocoded_City2"), "\\([0-9-.,A-z ]*\\)", ""));
         airfare_df = airfare_df.withColumn("Geocoded_City1", regexp_replace(col("Geocoded_City1"), " ", ""));
         airfare_df = airfare_df.withColumn("Geocoded_City2", regexp_replace(col("Geocoded_City2"), " ", ""));
 
