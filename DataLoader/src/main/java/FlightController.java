@@ -56,13 +56,12 @@ import java.util.*;
                 flight.set_arrival_time(new Time(time_formatter.parse(flight_infos[5]).getTime()));
                 flight.set_route_code(route);
                 flight.set_date(day_sdf.parse(flight_infos[7]));
+                createFlight(flight);
             }
 
         } catch (Exception e) {
             System.out.println("[ERROR] Errors creating the flight: " + flight_concat);
         }
-
-        createFlight(flight);
      }
 
      public void createFlight(Flight f) {

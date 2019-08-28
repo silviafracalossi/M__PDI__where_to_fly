@@ -58,8 +58,6 @@ import java.util.*;
                         fare.set_year(Integer.parseInt(fare_infos[0]));
                         fare.set_quarter(Integer.parseInt(fare_infos[1]));
                         fare.set_price(Float.parseFloat(fare_infos[2]));
-
-                        System.out.println("Inserting " +fare);
                         createFare(fare);
                     } else {
                         System.out.println("[WARN] Fare not inserted since there is no route correspondence");

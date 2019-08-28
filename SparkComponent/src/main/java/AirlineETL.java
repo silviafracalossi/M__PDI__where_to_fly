@@ -7,7 +7,6 @@ public class AirlineETL {
 	public AirlineETL () {
 
 		// CSV source path and output path definition
-		String airline_header = "IATA_CODE,AIRLINE";
 		String airlines_csv = "../data/kaggle_airlines.csv";
 		String outputPath = "../parsed_data/airlines";
 

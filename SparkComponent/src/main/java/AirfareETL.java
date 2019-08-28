@@ -11,8 +11,8 @@ public class AirfareETL implements Serializable {
     public AirfareETL () {
 
         // CSV source path and output path definition
-        // String airfare_csv = "../data/transportation_airfare.csv";
-        String airfare_csv = "../data/airfare_short.csv";
+        String airfare_csv = "../data/transportation_airfare.csv";
+        // String airfare_csv = "../data/airfare_short.csv";
         String outputAirfarePath = "../parsed_data/fares";
 
         // Create a Spark Session object and set the name of the application

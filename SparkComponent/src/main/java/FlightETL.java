@@ -9,8 +9,8 @@ public class FlightETL implements Serializable {
     public FlightETL () {
 
         // CSV source path and output path definition
-        // String flights_csv = "../data/kaggle_flights.csv";
-        String flights_csv = "../data/flights_short.csv";
+        String flights_csv = "../data/kaggle_flights.csv";
+        // String flights_csv = "../data/flights_short.csv";
         String outputFlightPath = "../parsed_data/flights";
         String outputRoutePath = "../parsed_data/routes";
 
