@@ -24,6 +24,9 @@
     <mapping class="Route" resource="route.hbm.xml"/>
     <mapping class="Flight" resource="flight.hbm.xml"/>
     <mapping class="Fare" resource="fare.hbm.xml"/>
+    <mapping class="AirportUser" resource="airportuser.hbm.xml"/>
+    <mapping class="CustomerUser" resource="customeruser.hbm.xml"/>
+    <!-- <mapping class="Booking" resource="booking.hbm.xml"/> -->
 
 </session-factory>
 

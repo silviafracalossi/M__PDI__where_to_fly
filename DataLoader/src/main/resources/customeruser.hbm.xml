@@ -1,0 +1,10 @@
+<hibernate-mapping>
+
+    <class name="CustomerUser" table="CUSTOMERUSER">
+        <meta attribute = "class-description">This class contains the details of Customer User.</meta>
+        <id name="nickname" column="NICKNAME" type="java.lang.String"><generator class="assigned"/></id>
+        <property name="firstname" column="FIRSTNAME" type="java.lang.String" />
+        <property name="lastname" column="LASTNAME" type="java.lang.String" />
+    </class>
+
+</hibernate-mapping>
