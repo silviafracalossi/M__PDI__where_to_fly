@@ -98,8 +98,8 @@
 
         public Airport getAirportByCityState (String city, String state) {
             List<Airport> airports = session.createQuery(
-                    "from Airport a where a.city LIKE :city_parameter and a.state LIKE :state_parameter")
-                    .setParameter("city_parameter", "%"+city+"%")
+                    "from Airport a where replace(lower(a.city), ' ', '') LIKE :city_parameter and a.state LIKE :state_parameter")
+                    .setParameter("city_parameter", "%"+city.toLowerCase().replaceAll("\\s+", "")+"%")
                     .setParameter("state_parameter", "%"+state+"%")
                     .list();
             return (airports.size() > 0) ? airports.get(0) : new Airport();
