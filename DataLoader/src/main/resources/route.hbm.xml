@@ -1,0 +1,10 @@
+<hibernate-mapping>
+
+    <class name="Route" table="ROUTE">
+        <meta attribute = "class-description">This class contains the details of Routes.</meta>
+        <id name="route_code" column="ROUTE_CODE" type="java.lang.String"><generator class="assigned"/></id>
+        <property name="origin_airport" column="ORIGIN_AIRPORT" type="Airport" />
+        <property name="destination_airport" column="DESTINATION_AIRPORT" type="Airport" />
+    </class>
+
+</hibernate-mapping>

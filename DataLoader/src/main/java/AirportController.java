@@ -39,4 +39,17 @@ import java.util.*;
      public void createAirport(Airport a) {
          service.createAirport(a);
      }
+
+     // ----- METHODS USED FOR FOREIGN KEY -----
+
+     public List<Airport> getAllAirports () { return service.getAllAirports(); }
+
+     public Airport getAirportByPk (String iata_code) {
+ 	    return service.getAirportByPk(iata_code);
+     }
+
+     public Airport getAirportByCityState (String city, String state) {
+         return service.getAirportByCityState(city, state);
+     }
+
  }

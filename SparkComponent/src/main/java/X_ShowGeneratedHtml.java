@@ -7,19 +7,43 @@ class X_ShowGeneratedHtml {
 
     try {
 
-      BufferedReader display_file_br = new BufferedReader(new FileReader("../parsed_data/"+entity+"/part-00000"));
-
       File f = new File("source.htm");
       BufferedWriter bw = new BufferedWriter(new FileWriter(f));
       bw.write("<html>");
       bw.write("<body>");
       bw.write("<h1>ShowGeneratedHtml source</h1>");
-      bw.write("<textarea cols=75 rows=30>");
+      bw.write("<textarea cols=300 rows=30>");
 
+      int i = 0;
+      String a = "";
       String line;
-      while ((line = display_file_br.readLine()) != null) {
+
+      // Preparing the number of the file
+      a = i + "";
+      while (a.length() != 5) {
+        a = "0" + a;
+      }
+
+      // Checking if exists file
+      String file_path = "../parsed_data/"+entity+"/part-"+a;
+      while (new File(file_path).exists()) {
+
+        // Reading the file
+        System.out.println("Reading file " +file_path);
+        BufferedReader display_file_br = new BufferedReader(new FileReader(file_path));
+        while ((line = display_file_br.readLine()) != null) {
           bw.write(line);
           bw.newLine();
+        }
+        display_file_br.close();
+
+        // Preparing the number of the file
+        i = i + 1;
+        a = i + "";
+        while (a.length() != 5) {
+          a = "0" + a;
+        }
+        file_path = "../parsed_data/"+entity+"/part-"+a;
       }
 
       bw.write("</text" + "area>");
@@ -29,7 +53,6 @@ class X_ShowGeneratedHtml {
       bw.write("</body>");
       bw.write("</html>");
 
-      display_file_br.close();
       bw.close();
 
       Desktop.getDesktop().browse(f.toURI());

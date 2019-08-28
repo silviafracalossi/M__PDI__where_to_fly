@@ -1,0 +1,13 @@
+<hibernate-mapping>
+
+    <class name="Fare" table="FARE">
+        <meta attribute = "class-description">This class contains the details of Fares.</meta>
+        <composite-id>
+            <key-property name="route_code" column="ROUTE_CODE" type="java.lang.String" />
+            <key-property name="year" column="YEAR" type="java.lang.Integer" />
+            <key-property name="quarter" column="QUARTER" type="java.util.Integer" />
+        </composite-id>
+        <property name="fare" column="FARE" type="java.sql.Float" />
+    </class>
+
+</hibernate-mapping>

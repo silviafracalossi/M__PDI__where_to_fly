@@ -7,7 +7,6 @@ public class AirlineETL {
 	public AirlineETL () {
 
 		// CSV source path and output path definition
-		String airline_header = "IATA_CODE,AIRLINE";
 		String airlines_csv = "../data/kaggle_airlines.csv";
 		String outputPath = "../parsed_data/airlines";
 
@@ -19,13 +18,6 @@ public class AirlineETL {
 
 		// Getting data from airlines file
 		JavaRDD<String> airlines_data = sc.textFile(airlines_csv);
-
-		// Creating instances of Airline
-		/*airlines_data.foreach((airline) -> {
-			if (!airline.equals(airline_header)) {
-				controller.createAirline(airline);
-			}
-		});*/
 
 		// Saving the content in a file
 		airlines_data.saveAsTextFile(outputPath);

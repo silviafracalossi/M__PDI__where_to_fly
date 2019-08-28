@@ -79,13 +79,31 @@
            session.getTransaction().commit();
        }
 
-       /**
+        // ----- METHODS USED FOR FOREIGN KEY -----
+
+        /**
         * Retrieves all the airports stored in DB
         * @return list of all airports
         */
-       public List<Airport> getAllAirports() {
-           return session.createQuery("from Airport a").list();
-       }
+        public List<Airport> getAllAirports() {
+         return session.createQuery("from Airport a").list();
+        }
+
+        public Airport getAirportByPk (String iata_code) {
+            List<Airport> airports = session.createQuery("from Airport a where a.iata_code LIKE :iata_parameter")
+                    .setParameter("iata_parameter", "%"+iata_code+"%")
+                    .list();
+            return (airports.size() > 0) ? airports.get(0) : new Airport();
+        }
+
+        public Airport getAirportByCityState (String city, String state) {
+            List<Airport> airports = session.createQuery(
+                    "from Airport a where replace(lower(a.city), ' ', '') LIKE :city_parameter and a.state LIKE :state_parameter")
+                    .setParameter("city_parameter", "%"+city.toLowerCase().replaceAll("\\s+", "")+"%")
+                    .setParameter("state_parameter", "%"+state+"%")
+                    .list();
+            return (airports.size() > 0) ? airports.get(0) : new Airport();
+        }
 
 
  }
