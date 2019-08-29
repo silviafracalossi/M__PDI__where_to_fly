@@ -29,7 +29,7 @@ import java.util.*;
      }
 
      // Structure: AIRLINE|FLIGHT_NUMBER|SCHEDULED_DEPARTURE|DEPARTURE_TIME|SCHEDULED_ARRIVAL|ARRIVAL_TIME|ROUTE_CODE|DATE
-     public void createFlight(String flight_concat){
+     public Flight createFlight(String flight_concat){
 
         // Remove the initial "[" and the final "]" characters
         if (flight_concat.charAt(0) == '[') {
@@ -39,7 +39,7 @@ import java.util.*;
         // Splitting data
         String[] flight_infos = flight_concat.split(",");
         DateFormat time_formatter = new SimpleDateFormat("hhmm");
-        SimpleDateFormat day_sdf = new SimpleDateFormat("dd-mm-yyyy");
+        SimpleDateFormat day_sdf = new SimpleDateFormat("dd-MM-yyyy");
         Flight flight = new Flight();
 
         // Creating flight by setting the new information
@@ -62,6 +62,7 @@ import java.util.*;
         } catch (Exception e) {
             System.out.println("[ERROR] Errors creating the flight: " + flight_concat);
         }
+        return flight;
      }
 
      public void createFlight(Flight f) {

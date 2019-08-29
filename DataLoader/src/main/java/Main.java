@@ -13,6 +13,10 @@ public class Main {
 		// Loads on the db the data
 		// DataLoader dl = new DataLoader(db_session);
 
+		FlightController fc = new FlightController(db_session);
+		Flight flight = fc.createFlight("[UA,414,0625,0627,0754,0742,LAX_SFO,27-11-2015]");
+		System.out.println(flight);
+
 		// AirportUser handling objects
 		/*AirportUserController airport_user_controller = new AirportUserController(db_session);
 		AirportUser as = airport_user_controller.createAirportUser("ABE");
@@ -22,11 +26,6 @@ public class Main {
 		/*CustomerUserController customer_user_controller = new CustomerUserController(db_session);
 		CustomerUser customer = customer_user_controller.createCustomerUser("nickname,name,lastname");
 		System.out.println(customer);*/
-
-		// Booking handling objects - TODO fix reference to flight table
-		BookingController booking_user_controller = new BookingController(db_session);
-		Booking booking = booking_user_controller.createBooking("ABE_ATL,1084,2015-01-13", "nickname", 3);
-		System.out.println(booking);
 
 		System.exit(0);
 	}
