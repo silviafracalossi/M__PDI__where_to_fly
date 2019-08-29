@@ -194,7 +194,7 @@ public class Flight implements Serializable {
     @Override
     public String toString() {
         return "Flight number " + this.flight_number + ", route_code = " + this.route_code.get_route_code() + ", on " + this.date +
-                "with airline +" + this.airline_iata.get_iata_code() + "; Scheduled departure: " + this.scheduled_departure +
+                " with airline " + this.airline_iata.get_iata_code() + "; Scheduled departure: " + this.scheduled_departure +
                 ", actual one: " + this.departure_time + "; Scheduled arrival " + this.scheduled_arrival +
                 ", actual one: " + this.arrival_time + ";";
     }

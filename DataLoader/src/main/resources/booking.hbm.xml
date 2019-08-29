@@ -1,0 +1,12 @@
+<hibernate-mapping>
+
+    <class name="Booking" table="BOOKING">
+        <meta attribute = "class-description">This class contains the details of Bookings.</meta>
+        <composite-id>
+            <key-property name="customer_user" column="CUSTOMER_USER" type="CustomerUser" />
+            <key-property name="flight" column="FLIGHT" type="Flight" />
+        </composite-id>
+        <property name="passengers" column="PASSENGERS" type="java.util.Integer" />
+    </class>
+
+</hibernate-mapping>

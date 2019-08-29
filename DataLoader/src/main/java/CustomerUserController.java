@@ -36,5 +36,9 @@ public class CustomerUserController implements Serializable {
 
     public List<CustomerUser> getAllCustomerUsers () { return service.getAllCustomerUsers(); }
 
+    public CustomerUser getCustomerUserByPk(String nickname) {
+        return service.getCustomerUserByPk(nickname);
+    }
+
 
 }

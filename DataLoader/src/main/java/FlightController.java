@@ -71,4 +71,12 @@ import java.util.*;
      // ----- METHODS USED FOR FOREIGN KEY -----
 
      public List<Flight> getAllFlights() { return service.getAllFlights(); }
+
+     public Flight getFlightByPk(String flight_route, String flight_number, String date) {
+         Route route = rc.getRouteByPk(flight_route);
+         if (route.get_route_code() != null) {
+             return service.getFlightByPk(route, flight_number, date);
+         }
+         return new Flight();
+     }
  }

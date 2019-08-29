@@ -78,6 +78,19 @@ public class CustomerUserServiceMysql implements Serializable {
         return session.createQuery("from CustomerUser c").list();
     }
 
+    /**
+     * Retrieves all the customers stored in DB
+     * @param nickname pk of customer
+     * @return customer with nickname as pk
+     */
+    public CustomerUser getCustomerUserByPk(String nickname) {
+        List<CustomerUser> customers = session.createQuery("from CustomerUser c " +
+                "where c.nickname LIKE :nickname_param")
+                .setParameter("nickname_param", "%"+nickname+"%")
+                .list();
+        return (customers.size() > 0) ? customers.get(0) : new CustomerUser();
+    }
+
 
 
 }
