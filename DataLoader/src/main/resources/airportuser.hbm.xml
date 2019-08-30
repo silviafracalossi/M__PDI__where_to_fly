@@ -1,8 +1,0 @@
-<hibernate-mapping>
-
-    <class name="AirportUser" table="AIRPORTUSER">
-        <meta attribute = "class-description">This class contains the details of Airport User.</meta>
-        <id name="airport_iata_code" column="AIRPORT_IATA_CODE" type="AIRPORT"><generator class="assigned"/></id>
-    </class>
-
-</hibernate-mapping>
