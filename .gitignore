@@ -17,3 +17,5 @@ SparkComponent/command-spark-submit.bat
 DataLoader/.idea
 DataLoader/target
 DataLoader/DataLoader.iml
+DataLoader/.settings
+DataLoader/.classpath
