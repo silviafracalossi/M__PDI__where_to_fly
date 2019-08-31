@@ -23,6 +23,9 @@ public class Main {
 			}
 		});
 
+		// Elaborating the data
+		// DataLoader dl = new DataLoader();
+
 		// Getting all the analytics
 		/*AnalyticsServiceMysql asm = new AnalyticsServiceMysql(db_session);
 		asm.generateVisualization();*/
