@@ -11,25 +11,23 @@ public class Main {
 		DatabaseConnector db_connector = new DatabaseConnector();
 		Session db_session = db_connector.session;
 
-		// Getting all the analytics
-		AnalyticsServiceMysql asm = new AnalyticsServiceMysql(db_session);
-		asm.generateVisualization();
-        
 
-		System.exit(0);
-        
-		
-		
 		// Initialize the interface
-		/*EventQueue.invokeLater(new Runnable() {
+		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LoginWindow window = new LoginWindow();
+					StartWindow window = new StartWindow(db_session);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
-		});*/
+		});
+
+		// Getting all the analytics
+		/*AnalyticsServiceMysql asm = new AnalyticsServiceMysql(db_session);
+		asm.generateVisualization();*/
+
+
 	}
 
 }

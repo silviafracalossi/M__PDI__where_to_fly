@@ -1,7 +1,7 @@
 
  import java.util.*;
- import java.io.Serializable;
- import org.hibernate.Session;
+
+import org.hibernate.Session;
  import java.awt.Desktop;
  import java.io.*;
 
@@ -13,6 +13,18 @@
 
      public AnalyticsServiceMysql (Session session) {
          this.session = session;
+     }
+     
+     public void displayAnalytics() {
+    	 
+    	 
+    	 try {
+    		 File f = new File("source.htm");
+			Desktop.getDesktop().browse(f.toURI());
+		} catch (IOException e) {
+			System.out.println("No file found");
+			e.printStackTrace();
+		}
      }
      
      // Shows the analytics
