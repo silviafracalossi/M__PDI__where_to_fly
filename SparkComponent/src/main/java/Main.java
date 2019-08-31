@@ -8,9 +8,6 @@ public class Main {
 		AirportETL airport_etl = new AirportETL();
 		FlightETL flight_etl = new FlightETL();
 		AirfareETL airfare_etl = new AirfareETL();
-
-		// Shows the last generated file
-		X_ShowGeneratedHtml rgh = new X_ShowGeneratedHtml("fares");
 	}
 
 }

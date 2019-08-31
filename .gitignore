@@ -1,8 +1,8 @@
 # Project Ignore
 .project
 data
+ex_out
 parsed_data
-parsed_data_backup
 
 # SparkComponent Ignore
 SparkComponent/target
@@ -11,9 +11,17 @@ SparkComponent/.classpath
 SparkComponent/.settings
 SparkComponent/source.htm
 SparkComponent/SparkComponent.iml
-SparkComponent/command-spark-submit.bat
 
 # DataLoader Ignore
 DataLoader/.idea
 DataLoader/target
 DataLoader/DataLoader.iml
+DataLoader/.settings
+DataLoader/.classpath
+DataLoader/source.htm
+
+# PredictionComponent Ignore
+PredictionComponent/.idea
+PredictionComponent/target
+PredictionComponent/source.htm
+PredictionComponent/PredictionComponent.iml

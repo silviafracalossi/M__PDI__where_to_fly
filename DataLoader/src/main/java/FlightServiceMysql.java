@@ -89,5 +89,30 @@
            return session.createQuery("from Flight f").list();
        }
 
+        /**
+        * Retrieves all the flights stored in DB
+        * @param route route of flight
+        * @param flight_number number of flight
+        * @param date date of the flight
+        * @return flight with asked pk
+        */
+        public Flight getFlightByPk(Route route, String flight_number, String date) {
+            String[] splitted_date = date.split("-");
+             List<Flight> flights = session.createQuery(
+                     "from Flight f " +
+                             "where f.route_code = :route_param " +
+                             "and flight_number LIKE :number_param " +
+                             "and day(date) = :day_param " +
+                             "and month(date) = :month_param " +
+                             "and year(date) = :year_param ")
+                     .setParameter("route_param", route)
+                     .setParameter("number_param", "%"+flight_number+"%")
+                     .setParameter("day_param", Integer.parseInt(splitted_date[2]))
+                     .setParameter("month_param", Integer.parseInt(splitted_date[1]))
+                     .setParameter("year_param", Integer.parseInt(splitted_date[0]))
+                     .list();
+             return (flights.size() > 0) ? flights.get(0) : new Flight();
+        }
+
 
  }

@@ -1,6 +1,7 @@
 
-import org.hibernate.Session;
+import java.awt.EventQueue;
 import java.util.List;
+import org.hibernate.Session;
 
 public class Main {
 
@@ -10,13 +11,26 @@ public class Main {
 		DatabaseConnector db_connector = new DatabaseConnector();
 		Session db_session = db_connector.session;
 
-		// If triggered, loads on the db the data
-		if (false) {
-			DataLoader dl = new DataLoader(db_session);
-		}
+
+		// Initialize the interface
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					StartWindow window = new StartWindow(db_session);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+
+		// Elaborating the data
+		// DataLoader dl = new DataLoader();
+
+		// Getting all the analytics
+		/*AnalyticsServiceMysql asm = new AnalyticsServiceMysql(db_session);
+		asm.generateVisualization();*/
 
 
-		System.exit(0);
 	}
 
 }
