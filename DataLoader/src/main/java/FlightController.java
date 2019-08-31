@@ -80,4 +80,9 @@ import java.util.*;
          }
          return new Flight();
      }
+
+     public List<Flight> getFilteredFlights (Airport origin_airport, Airport destination_airport) {
+         return service.getFilteredFlights(origin_airport, destination_airport);
+     }
+
  }

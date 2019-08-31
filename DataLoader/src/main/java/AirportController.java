@@ -1,5 +1,4 @@
 import org.hibernate.Session;
-
 import java.io.Serializable;
 import java.util.*;
 
@@ -51,5 +50,4 @@ import java.util.*;
      public Airport getAirportByCityState (String city, String state) {
          return service.getAirportByCityState(city, state);
      }
-
  }

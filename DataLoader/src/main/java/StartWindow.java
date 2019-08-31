@@ -31,19 +31,6 @@ public class StartWindow {
 		panel.setBackground(SystemColor.control);
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("Insert Airport IATA code:");
-		lblNewLabel.setBounds(86, 280, 153, 20);
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		panel.add(lblNewLabel);
-		
-		txtSomething = new JTextField();
-		txtSomething.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		txtSomething.setBounds(251, 280, 76, 20);
-		txtSomething.setHorizontalAlignment(SwingConstants.LEFT);
-		panel.add(txtSomething);
-		txtSomething.setColumns(10);
 				
 		JLabel lblWelcomeToWheretofly = new JLabel("Welcome to WhereToFLy");
 		lblWelcomeToWheretofly.setBounds(10, 54, 566, 25);
@@ -56,25 +43,12 @@ public class StartWindow {
 		JButton btnExploreFlights = new JButton("Explore Flights");
 		btnExploreFlights.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Explore!");
+				frame.setVisible(false);
+				ExploreFlightsWindow sf = new ExploreFlightsWindow(db_session);
 			}
 		});
 		btnExploreFlights.setBounds(364, 194, 139, 34);
 		panel.add(btnExploreFlights);
-		
-		// LOGIN BUTTON
-		JButton btnLoginAsAirport = new JButton("Login as Airport");
-		btnLoginAsAirport.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String iata_code = txtSomething.getText();
-				if (!iata_code.contentEquals("")) {
-					System.out.println(iata_code);
-					// frame.setVisible(false);
-				}
-			}
-		});
-		btnLoginAsAirport.setBounds(364, 270, 139, 34);
-		panel.add(btnLoginAsAirport);
 		
 		// SHOW ANALYTICS BUTTON
 		JButton btnShowAnalytics = new JButton("Show Analytics");
@@ -97,7 +71,7 @@ public class StartWindow {
 		lblClickHereTo_1.setBounds(124, 205, 178, 13);
 		panel.add(lblClickHereTo_1);
 		
-		frame.setPreferredSize(new Dimension(600, 400));
+		frame.setPreferredSize(new Dimension(600, 350));
 		frame.pack();
 		frame.setVisible(true);
 	}

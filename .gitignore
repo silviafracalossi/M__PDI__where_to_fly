@@ -1,15 +1,11 @@
 # Project Ignore
 .project
-data
-ex_out
-parsed_data
 
 # SparkComponent Ignore
 SparkComponent/target
 SparkComponent/.idea
 SparkComponent/.classpath
 SparkComponent/.settings
-SparkComponent/source.htm
 SparkComponent/SparkComponent.iml
 
 # DataLoader Ignore
@@ -19,9 +15,9 @@ DataLoader/DataLoader.iml
 DataLoader/.settings
 DataLoader/.classpath
 DataLoader/source.htm
+DataLoader/bin
 
 # PredictionComponent Ignore
 PredictionComponent/.idea
 PredictionComponent/target
-PredictionComponent/source.htm
 PredictionComponent/PredictionComponent.iml

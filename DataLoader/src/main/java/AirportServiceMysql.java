@@ -86,7 +86,7 @@
         * @return list of all airports
         */
         public List<Airport> getAllAirports() {
-         return session.createQuery("from Airport a").list();
+         return session.createQuery("from Airport a order by a.city ").list();
         }
 
         public Airport getAirportByPk (String iata_code) {
@@ -104,6 +104,5 @@
                     .list();
             return (airports.size() > 0) ? airports.get(0) : new Airport();
         }
-
 
  }

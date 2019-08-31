@@ -86,7 +86,7 @@
         * @return list of all flights
         */
        public List<Flight> getAllFlights() {
-           return session.createQuery("from Flight f").list();
+           return session.createQuery("from Flight f ").list();
        }
 
         /**
@@ -113,6 +113,39 @@
                      .list();
              return (flights.size() > 0) ? flights.get(0) : new Flight();
         }
+
+         public List<Flight> getFilteredFlights(Airport origin_airport, Airport destination_airport) {
+             String query = "from Flight f ";
+             Boolean first_where = true;
+
+             if (origin_airport.get_iata_code() != null) {
+                 if (first_where) {
+                     query += " where ";
+                     first_where = false;
+                 }
+                 query += "f.route_code.origin_airport LIKE :origin_param";
+             }
+
+             if (destination_airport.get_iata_code() != null) {
+                 if (first_where) {
+                     query += " where ";
+                     first_where = false;
+                 } else {
+                     query += " and ";
+                 }
+                 query += "f.route_code.destination_airport LIKE :destination_param";
+             }
+
+             Query final_query = session.createQuery(query);
+             if (origin_airport.get_iata_code() != null) {
+                final_query.setParameter("origin_param", origin_airport);
+             }
+             if (destination_airport.get_iata_code() != null) {
+                 final_query.setParameter("destination_param", destination_airport);
+             }
+
+             return final_query.setMaxResults(15).list();
+         }
 
 
  }
