@@ -1,5 +1,8 @@
 # Project Ignore
 .project
+data
+ex_out
+parsed_data/*/*
 
 # SparkComponent Ignore
 SparkComponent/target
